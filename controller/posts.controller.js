@@ -1,3 +1,4 @@
+//Kizdarodino database hostings
 const pool = require("../database/index")
 const postsController = {
     getAll: async (req, res) => {

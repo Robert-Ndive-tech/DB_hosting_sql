@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 
+//Kizdarodino database hostings
 require('dotenv').config()
 
 app.use(express.urlencoded({extended: false}))
