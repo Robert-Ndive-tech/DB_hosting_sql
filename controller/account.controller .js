@@ -17,7 +17,7 @@ const accountController ={
     },
     getAll: async (req, res) => {
         try {
-            const [rows, fields] = await pool.query("select * from posts")
+            const [rows, fields] = await pool.query("select * from Citizen")
             res.json({
                 data: rows
             })
