@@ -30,8 +30,8 @@ const accountController ={
     },
     update: async (req, res) => {
         try {
-            const { Name, Password, Phonenumber,Age, Address, CStatus }  = req.body
-            const { Email } = req.params
+            const { Name,Email, Password, Phonenumber,Age, Address, CStatus }  = req.body
+            const { id } = req.params
             const sql = "update Citizen set Name = ?, Password = ? , Phonenumber = ? , Age= ? CStatus , Address = ? where Email = ?"
             const [rows, fields] = await pool.query(sql, [ Name, Password, Email, Phonenumber,Age, Address, CStatus])
             res.json({
@@ -44,7 +44,35 @@ const accountController ={
             })
         }
     }, 
+    getById: async (req, res) => {
+        try {
+            const { id } = req.params
+            const [rows, fields] = await pool.query("select * from Citizen where id = ?", [id])
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
 
+    delete: async (req, res) => {
+        try {
+            const { id } = req.params
+            const [rows, fields] = await pool.query("delete from Citizen where id = ?", [id])
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    }
 
 
 }
