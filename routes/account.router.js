@@ -3,11 +3,11 @@
 const express = require("express")
 const router = express.Router()
 
-const postsController = require("../controller/posts.controller")
+const accountController = require("../controller/account.controller")
 
-router.get("/", postsController.getAll)
-router.post("/", postsController.create)
-router.put("/:id", postsController.update)
+router.get("/", accountController.getAll)
+router.post("/", accountController.create)
+router.put("/:id", accountController.update)
 
 
 module.exports = router
