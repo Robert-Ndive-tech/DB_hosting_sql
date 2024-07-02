@@ -1,3 +1,4 @@
+//Kizdarodino database hostings
 const mysql = require('mysql2')
 
 const pool = mysql.createPool({
