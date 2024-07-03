@@ -10,7 +10,7 @@ router.post("/", accountController.create)
 router.put("/:id", accountController.update)
 router.get("/:id", accountController.getById)
 router.delete("/:id", accountController.delete)
-router.login("/l",accountController.login) 
-//router.login("/",accountController.login) router.register("/",accountController.register)
+router.get("/",accountController.login)
+router.post("/",accountController.register)
 
 module.exports = router
