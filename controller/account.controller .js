@@ -108,6 +108,7 @@ const accountController ={
             const [user, ] = await pool.query("select * from Citizen where Email = ?", [Email])
             if (user[0]) return res.json({ error: "Email already exists!" }).console.log("Email already exist")
             const hash = await bcrypt.hash(Password, 10)
+        console.log("Passwords hash is ",{hash})
             const sql = 'INSERT INTO Citizen (Name, Password, Email, Phonenumber, Age,Address, CStatus) VALUES (?, ?, ?, ?,?, ?, ?)';
             const [rows, fields] = await pool.query(sql, [ Name, hash, Email, Phonenumber,Age, Address, CStatus])
             if (rows.affectedRows) {
