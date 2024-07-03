@@ -13,7 +13,7 @@ const authRouter = require('./routes/auth.router')
 
 app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
-app.use("/api/v1/auth", authRouter)
+
 
 const PORT = process.env.PORT || 1000
 
