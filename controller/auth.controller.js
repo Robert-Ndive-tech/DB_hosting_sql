@@ -7,7 +7,7 @@ const authController = {
         try {
             const { email, password, name } = req.body
             const [user, ] = await pool.query("select * from users where email = ?", [email])
-            if (user[0]) return res.json({ error: "Email already exists!" })
+            if (user[0]) return res.json({ error: "Email already exists!" }).console.log("Email already exist")
             
 
             const hash = await bcrypt.hash(password, 10)
