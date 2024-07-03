@@ -15,7 +15,7 @@ app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
 
 
-const PORT = process.env.PORT || 1000
+const PORT = process.env.PORT || 2000
 
 app.listen(PORT, () => {
     console.log("Server is running....")

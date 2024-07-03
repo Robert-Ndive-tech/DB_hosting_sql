@@ -109,7 +109,7 @@ const accountController ={
             const sql = 'INSERT INTO Citizen (Name, Password, Email, Phonenumber, Age,Address, CStatus) VALUES (?, ?, ?, ?,?, ?, ?)';
             const [rows, fields] = await pool.query(sql, [ Name, Password, Email, Phonenumber,Age, Address, CStatus])
             if (rows.affectedRows) {
-                return res.json({ message: "Ok" })
+                return res.json({ message: "Succesully registered" })
             } else {
                 return res.json({ error: "Error" })
             }
