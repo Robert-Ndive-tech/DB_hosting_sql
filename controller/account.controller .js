@@ -1,4 +1,6 @@
-const pool = require ("../database/index")
+const bcrypt = require('bcrypt');
+const pool = require ("../database/index");
+const jwt = require('jsonwebtoken');
 const accountController ={
     create: async (req, res) => {
         try {
