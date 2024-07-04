@@ -5,8 +5,8 @@ const router = express.Router()
 
 
 router.post("/",LocationController.create)
-router.post("/create",LocationController.update)
-router.post("/find",LocationController.getById)
-router.post("/list",LocationController.getAll)
+router.put("/create",LocationController.update)
+router.get("/find",LocationController.getById)
+router.get("/list",LocationController.getAll)
 
 module.exports = router
