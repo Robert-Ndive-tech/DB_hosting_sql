@@ -14,6 +14,7 @@ const  communicationController= {
             })
         }
     },
+
     getById: async (req, res) => {
         try {
             const { Type } = req.body
