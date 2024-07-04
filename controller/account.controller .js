@@ -98,7 +98,7 @@ const accountController ={
         } catch (error) {
             console.log(error)
             res.json({
-                error: error.message
+                error: "The is an error"
             })
         }
     },
