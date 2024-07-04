@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 router.post("/register",emergencyController.register)
-router.post("/list",emergencyController.getAll)
+router.post("/",emergencyController.getAll)
 router.post("/find",emergencyController.getById)
 router.post("/login",emergencyController.login)
 

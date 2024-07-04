@@ -20,11 +20,11 @@ const LocationRouter = require('./routes/Location.router')
 app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
 app.use("/api/v1/admin",adminRouter)
-app.use("/api/v1/communicate",communicationHubRouter)
+/*app.use("/api/v1/communicate",communicationHubRouter)
 app.use("/api/v1/disaster",disastercenterRouter)
 app.use("/api/v1/emergency",emergencyRouter)
 app.use("/api/v1/shelter",shelterRouter)
-app.use("/api/v1/Location",LocationRouter)
+app.use("/api/v1/location",LocationRouter)*/
 
 
 const PORT = process.env.PORT || 2000
