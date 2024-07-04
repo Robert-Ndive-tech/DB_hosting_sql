@@ -14,6 +14,7 @@ const LocationController = {
             })
         }
     },
+
     getById: async (req, res) => {
         try {
             const { UserID } = req.body
