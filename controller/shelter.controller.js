@@ -16,8 +16,8 @@ const shelterController = {
     },
     getById: async (req, res) => {
         try {
-            const { UserID } = req.body
-            const [rows, fields] = await pool.query("select * from Shelter where UserID = ?", [UserID])
+            const { ShelterID } = req.body
+            const [rows, fields] = await pool.query("select * from Shelter where ShelterID= ?", [ShelterID])
             res.json({
                 data: rows
             })
