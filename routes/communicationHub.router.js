@@ -6,9 +6,9 @@ const router = express.Router()
 const communicationController = require("../controller/communicationHub.contolller")
 
 router.post("/create",communicationController.create)
-router.post("/list", communicationController.getAll)
-router.post("/remove", communicationController.delete)
-router.post("/change",communicationController.update)
-router.post("/find", communicationController.getById)
+router.get("/list", communicationController.getAll)
+router.delete("/remove", communicationController.delete)
+router.put("/change",communicationController.update)
+router.get("/find", communicationController.getById)
 
 module.exports = router
