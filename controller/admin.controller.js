@@ -32,9 +32,8 @@ const adminController ={
         }
     },
     getAll: async (req, res) => {
-        const { AdminID } = req.body
         try {
-            const [rows, fields] = await pool.query("select * from AdminT WHERE id=?",[AdminID])
+            const [rows, fields] = await pool.query("select * from AdminT")
             res.json({
                 data: rows
             })
