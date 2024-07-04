@@ -3,7 +3,7 @@ const pool = require("../database/index")
 const LocationController = {
     getAll: async (req, res) => {
         try {
-            const [rows, fields] = await pool.query("select * from LocationDetails")
+            const [rows, fields] = await pool.query("select * from LocationDetails ")
             res.json({
                 data: rows
             })
