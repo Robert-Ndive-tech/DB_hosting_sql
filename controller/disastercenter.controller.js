@@ -1,5 +1,12 @@
 //Kizdarodino database hostings
 const pool = require("../database/index")
+const multer = require('multer');
+
+
+// Set up multer for buffer storage
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 const disasterController = {
     getAll: async (req, res) => {
         try {
@@ -43,6 +50,28 @@ const disasterController = {
             })
         }
     },
+sendimage : async (req, res) => {
+        upload.single('picture')(req, res, async (err) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ status: 'error', message: 'File upload failed' });
+            }
+    
+            try {
+                const { InfoID, Name, Status, Description, Type } = req.body;
+                const pictureBuffer = req.file ? req.file.buffer : null;
+    
+                const sql = "INSERT INTO DisasterCenter (InfoID, Name, Picture, Status, Description, Type) VALUES (?, ?, ?, ?, ?, ?)";
+                const [rows, fields] = await pool.query(sql, [InfoID, Name, pictureBuffer, Status, Description, Type]);
+    
+                res.json({ data: rows });
+            } catch (error) {
+                console.log(error);
+                res.json({ status: "error" });
+            }
+        });
+    },
+    
     update: async (req, res) => {
         try {
             const { InfoID,Name,Picture,Status,Description,Type, } = req.body
