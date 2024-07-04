@@ -7,8 +7,8 @@ const router = express.Router()
 
 
 router.post("/register",LocationController.create)
-router.post("/register",LocationController.getAll)
-router.post("/register",LocationController.update)
-router.post("/register",LocationController.getById)
+router.get("/register",LocationController.getAll)
+router.put("/register",LocationController.update)
+router.get("/register",LocationController.getById)
 
 module.exports = router
