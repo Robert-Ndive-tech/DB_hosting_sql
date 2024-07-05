@@ -28,7 +28,6 @@ const specialContoller ={
       console.log("No photo was sent");
       return res.status(400).send("No photo uploaded");
     }
-  
 
     const imagePath = `"../Assets${req.file.filename}"`; // Adjust path based on your storage location
   
