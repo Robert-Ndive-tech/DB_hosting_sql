@@ -94,7 +94,7 @@ sendimage : async (req, res) => {
                 res.json({ data: rows });
             } catch (error) {
                 console.log(error);
-                res.json({ status: "error" });
+                res.json({  error: error.message });
             }
    
     },
