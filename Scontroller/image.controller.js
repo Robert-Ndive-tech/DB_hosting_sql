@@ -14,7 +14,32 @@ const imageController = {
             })
         }
     },
+    getAllImages :async (req, res) => {
+        try {
+          const [rows] = await pool.query("SELECT id, name, image FROM Images");
+          
+          // Map the result to ensure we send the necessary fields
+          const images = rows.map(row => ({
+            id: row.id,
+            name: row.name,
+            image: row.image.toString('base64') // Convert binary image data to base64 string
+          }));
+      
+          res.status(200).json({
+            status: "success",
+            data: images
+          });
+        } catch (error) {
+          console.error('Error fetching images:', error);
+          res.status(500).json({
+            status: "error",
+            message: "Internal Server Error"
+          });
+        }
+      },
  
+
+
     create: async (req, res) => {
         try {
             const { title, content } = req.body

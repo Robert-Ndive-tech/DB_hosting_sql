@@ -7,5 +7,7 @@ const imageController = require("../../Scontroller/image.controller")
 
 router.get("/:id",imageController.Retrive)
 
-router.get("/",imageController.getAll)
+router.get("/",imageController.getAllImages)
+
+
 module.exports = router
