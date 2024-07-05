@@ -29,7 +29,7 @@ const emergencyRouter = require('./routes/emergency.router')
 const shelterRouter = require('./routes/shelter.router')
 const LocationRouter = require('./routes/Location.router')
 const imageRouter = require('./routes/router/image.router')
-
+const specialRouter = require('./routes/special.router')
 
 app.use("/api/v1/image",upload.single('image'),imageRouter)
 app.use("/api/v1/posts", postsRouter)
@@ -40,6 +40,8 @@ app.use("/api/v1/disaster",disastercenterRouter)
 app.use("/api/v1/emergency",emergencyRouter)
 app.use("/api/v1/shelter",shelterRouter)
 app.use("/api/v1/location",LocationRouter)
+app.use("/api/v1/image",specialRouter)
+
 
 
 const PORT = process.env.PORT || 2000
@@ -47,3 +49,4 @@ const PORT = process.env.PORT || 2000
 app.listen(PORT, () => {
     console.log("Server is running....")
 })
+
