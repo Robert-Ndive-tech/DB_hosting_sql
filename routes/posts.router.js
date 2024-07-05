@@ -20,6 +20,6 @@ router.post("/", postsController.create)
 router.put("/:id", postsController.update)
 router.delete("/:id", postsController.delete)
 router.post("/send",upload.single("Photo"),postsController.storeimage)
-router.get("/get",postsController.getImage);
+router.get("/get/:id",postsController.getImage);
 
 module.exports = router
