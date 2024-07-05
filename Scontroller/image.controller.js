@@ -91,6 +91,7 @@ const imageController = {
     },
 
     send: (req, res) => {
+        console.log("i am in")
         const image = req.file.buffer;
         const sql = 'INSERT INTO Images (name, image) VALUES (?, ?)';
         db.query(sql, ['Example Image', image], (err, result) => {
