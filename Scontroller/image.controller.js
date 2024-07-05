@@ -34,7 +34,7 @@ const imageController = {
 
    Retrive:(req, res) => {
         const imageId = req.params.id;
-        const sql = 'SELECT image FROM Images WHERE id = ?'[id];
+        const sql = 'SELECT image FROM Images WHERE id = ?';
         
         db.query(sql, [imageId], (err, result) => {
           if (err) throw err;
