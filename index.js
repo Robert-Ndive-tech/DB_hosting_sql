@@ -25,7 +25,7 @@ const disastercenterRouter = require('./routes/disastercenter.router')
 const emergencyRouter = require('./routes/emergency.router')
 const shelterRouter = require('./routes/shelter.router')
 const LocationRouter = require('./routes/Location.router')
-const imageRouter = require('./routes/router/image.router')
+
 const specialRouter = require('./routes/special.router')
 
 

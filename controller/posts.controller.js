@@ -73,6 +73,33 @@ const postsController = {
             })
         }
     }
+,
+storeimage: (req, res) => {
+      const  image = req.file.buffer.toString('base64')
+      const  name = req.body.product
+     const   sql = "INSERT INTO ImageTable VALUES(?,?)"
+        db.query(sql, [name, price, image], (err, rows, fields) => {
+            if (err) throw err;
+           console.log("Image has been sent successfully")})
+    }
+,
+    getImage: (req, res) => {
+        const { id } = req.params; // Assuming you're retrieving the image by product name
+        const sql = "SELECT name, image FROM ImageTable WHERE id = ?";
+        db.query(sql, [id], (err, rows, fields) => {
+          if (err) {
+            console.error(err);
+            return res.status(500).send('Error retrieving image');
+          }
+          if (rows.length === 0) {
+            return res.status(404).send('Image not found');
+          }
+          const image = rows[0].image;
+          const productName = rows[0].name; 
+          // Return the image and name as a JSON response
+          res.status(200).json({ name: productName, image });
+        });
+      }
 
 }
 
