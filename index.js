@@ -40,7 +40,7 @@ app.use("/api/v1/disaster",disastercenterRouter)
 app.use("/api/v1/emergency",emergencyRouter)
 app.use("/api/v1/shelter",shelterRouter)
 app.use("/api/v1/location",LocationRouter)
-app.use("/api/v1/image",upload.single("photo"),specialRouter)
+app.use("/api/v1/",upload.single("photo"),specialRouter)
 
 
 
