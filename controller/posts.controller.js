@@ -78,12 +78,12 @@ storeimage: (req, res) => {
       const  image = req.file.buffer.toString('base64')
       const  name = req.body.product
      const   sql = "INSERT INTO ImageTable VALUES(?,?)"
-        db.query(sql, [name, price, image], (err, rows, fields) => {
+        db.query(sql, [name,image], (err, rows, fields) => {
             if (err) throw err;
+            res.json(rows).send("Image loaded with success")
            console.log("Image has been sent successfully")})
     }
-,
-    getImage: (req, res) => {
+, getImage: (req, res) => {
         const { id } = req.params; // Assuming you're retrieving the image by product name
         const sql = "SELECT name, image FROM ImageTable WHERE id = ?";
         db.query(sql, [id], (err, rows, fields) => {
