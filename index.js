@@ -20,7 +20,7 @@ const LocationRouter = require('./routes/Location.router')
 const imageRouter = require('./routes/router/image.router')
 
 
-app.use("/api/v1/posts",imageRouter)
+app.use("/api/v1/image",imageRouter)
 app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
 app.use("/api/v1/admin",adminRouter)

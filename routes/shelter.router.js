@@ -6,9 +6,9 @@ const router = express.Router()
 
 
 
-router.post("/register",LocationController.create)
-router.get("/register",LocationController.getAll)
-router.put("/register",LocationController.update)
-router.get("/register",LocationController.getById)
+router.post("/create",LocationController.create)
+router.get("/list",LocationController.getAll)
+router.put("/change",LocationController.update)
+router.get("/find",LocationController.getById)
 
 module.exports = router
