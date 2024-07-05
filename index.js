@@ -46,7 +46,7 @@ app.use("/api/v1/communicate",communicationHubRouter)
 app.use("/api/v1/disaster",disastercenterRouter)
 app.use("/api/v1/emergency",emergencyRouter)
 app.use("/api/v1/shelter",shelterRouter)
-
+app.use("/api/v1/location",LocationRouter)
 app.use("/api/v1/pic",specialRouter)
 
 
