@@ -1,6 +1,9 @@
 const express = require("express")
 const app = express()
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const fs = require('fs');
 
 
 app.use(bodyParser.json());
