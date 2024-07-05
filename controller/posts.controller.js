@@ -79,7 +79,7 @@ storeimage: (req, res) => {
       const  name = req.body.product
      const   sql = "INSERT INTO ImageTable VALUES(?,?)"
         db.query(sql, [name,image], (err, rows, fields) => {
-            if (err) throw err;
+          
             res.json(rows).send("Image loaded with success")
            console.log("Image has been sent successfully")})
     }
