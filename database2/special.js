@@ -1,24 +1,6 @@
 
 const pool = require("../database/index")
-const bodyParser = require("body-parser");
 
-const multer = require("multer");
-var fs = require("fs");
-const cors = require("cors");
-
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, "../client/src/Assets"); // Change 'uploads/' to your desired directory path
-    },
-    filename: (req, file, cb) => {
-      cb(null, `${Date.now()}-${file.originalname}`);
-    },
-  });
-
-
-  const upload = multer({ storage });
-  
 const specialContoller ={
 
   //app.post("/upload", upload.single("photo"),  
