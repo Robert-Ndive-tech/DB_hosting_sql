@@ -96,7 +96,7 @@ const accountController ={
                  })
 
             }
-            return res.json({ error: "Wrong passwor" })   
+            return res.json({ error: "Wrong password" })   
         } catch (error) {
             console.log(error)
             res.json({
@@ -123,8 +123,6 @@ const accountController ={
             } else {
                 return res.json({ error: "Error" })
             }
-        
-        
         } catch (error) {
             console.log(error)
             res.json({

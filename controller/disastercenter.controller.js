@@ -30,6 +30,19 @@ const disasterController = {
             })
         }
     },
+    recievebyid: async (req, res) => {
+        try {const {id}= req.params
+            const [rows, fields] = await pool.query("select Imageurl from photo where id=?",[id])
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
     getById: async (req, res) => {
         try {
             const { InfoID } = req.body
