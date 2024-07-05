@@ -3,7 +3,7 @@ const express = require("express")
 const LocationController = require("../controller/LocationDetails")
 const router = express.Router()
 const multer = require("multer");
-var fs = require("fs");
+
 
 const Upload = multer({ dest: 'uploads/' });
 
