@@ -11,5 +11,6 @@ router.post("/send", disasterController.sendimage)
 router.put("/change", disasterController.update)
 router.get("/find", disasterController.getById)
 router.delete("/delete", disasterController.delete)
+router.get("/get", disasterController.recieve)
 
 module.exports = router

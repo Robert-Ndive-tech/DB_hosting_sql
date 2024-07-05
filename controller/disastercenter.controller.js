@@ -21,6 +21,19 @@ const disasterController = {
             })
         }
     },
+    recieve: async (req, res) => {
+        try {
+            const [rows, fields] = await pool.query("select * from photo")
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
     getById: async (req, res) => {
         try {
             const { InfoID } = req.body
