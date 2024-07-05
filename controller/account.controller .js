@@ -104,6 +104,7 @@ const accountController ={
             })
         }
     },
+
     register: async (req, res) => {
 
         try {
@@ -131,6 +132,11 @@ const accountController ={
             })
         }
     },
+
+   
+
+
+
 
 }
 
