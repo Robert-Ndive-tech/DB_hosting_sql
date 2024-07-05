@@ -2,6 +2,14 @@ const express = require("express")
 const app = express()
 const cors = require('cors');
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Set up multer for file uploads
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 //Kizdarodino database hostings
 require('dotenv').config()
 
@@ -20,7 +28,7 @@ const LocationRouter = require('./routes/Location.router')
 const imageRouter = require('./routes/router/image.router')
 
 
-app.use("/api/v1/image",imageRouter)
+app.use("/api/v1/image",upload.single('image'),imageRouter)
 app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
 app.use("/api/v1/admin",adminRouter)

@@ -88,7 +88,34 @@ const imageController = {
                 status: "error"
             })
         }
-    }
+    },
+
+    send: (req, res) => {
+        const image = req.file.buffer;
+        const sql = 'INSERT INTO Images (name, image) VALUES (?, ?)';
+        db.query(sql, ['Example Image', image], (err, result) => {
+          if (err) throw err;
+          res.json({ message: 'Image uploaded successfully', id: result.insertId });
+        });
+      },
+      
+      // Endpoint to retrieve image by ID
+      find:(req, res) => {
+        const imageId = req.params.id;
+        const sql = 'SELECT image FROM Images WHERE id = ?';
+        db.query(sql, [imageId], (err, result) => {
+          if (err) throw err;
+          if (result.length > 0) {
+            res.writeHead(200, {
+              'Content-Type': 'image/jpeg',
+              'Content-Length': result[0].image.length
+            });
+            res.end(result[0].image);
+          } else {
+            res.status(404).send('Image not found');
+          }
+        });
+      }
 
 }
 

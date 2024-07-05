@@ -6,7 +6,8 @@ const router = express.Router()
 const imageController = require("../../Scontroller/image.controller")
 
 router.get("/:id",imageController.Retrive)
-
+router.get("/find:id",imageController.find)
+router.get("/send",imageController.send)
 router.get("/",imageController.getAllImages)
 
 
