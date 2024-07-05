@@ -32,7 +32,7 @@ const specialContoller ={
     const imagePath = `"../Assets${req.file.filename}"`; // Adjust path based on your storage location
   
     // Prepare SQL query to insert data
-    const sql = `INSERT INTO Photo (Name,Imageurl) VALUES ("Picture",?)`;
+    const sql = `INSERT INTO photo (Name,Imageurl) VALUES ("Picture",?)`;
     let query = pool.query(sql, [imagePath], (err, result) => {
       if (err) throw err;
       res.send(result);

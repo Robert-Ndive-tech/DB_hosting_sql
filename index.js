@@ -31,7 +31,7 @@ const LocationRouter = require('./routes/Location.router')
 const imageRouter = require('./routes/router/image.router')
 const specialRouter = require('./routes/special.router')
 
-app.use("/api/v1/image",upload.single('image'),imageRouter)
+
 app.use("/api/v1/posts", postsRouter)
 app.use("/api/v1/accounts", accountRouter)
 app.use("/api/v1/admin",adminRouter)
@@ -40,7 +40,7 @@ app.use("/api/v1/disaster",disastercenterRouter)
 app.use("/api/v1/emergency",emergencyRouter)
 app.use("/api/v1/shelter",shelterRouter)
 app.use("/api/v1/location",LocationRouter)
-app.use("/api/v1/",upload.single("photo"),specialRouter)
+app.use("/api/v1/pic",upload.single("photo"),specialRouter)
 
 
 
