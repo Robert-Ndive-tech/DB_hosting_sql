@@ -84,6 +84,29 @@ sendimage : async (req, res) => {
             }
         });
     },
+
+    send : async (req, res) => {
+
+        if (!req.file) {
+            console.log("No photo was sent");
+            return res.status(400).send("No photo uploaded");
+          }
+            try {
+                const { InfoID, Name, Status, Description, Type } = req.body;
+         const imagePath = `"../Assets${req.file.filename}"`;
+                const sql = `INSERT INTO photo (Name,Imageurl) VALUES ("Picture",?)`;
+                const [rows, fields] = await pool.query(sql, [imagePath]);
+    
+                res.json({ data: rows });
+            } catch (error) {
+                console.log(error);
+                res.json({ status: "error" });
+            }
+   
+    },
+    
+
+
     
     update: async (req, res) => {
         try {
