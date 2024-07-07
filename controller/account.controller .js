@@ -50,8 +50,8 @@ const accountController ={
     }, 
     getById: async (req, res) => {
         try {
-            const { id } = req.params
-            const [rows, fields] = await pool.query("select * from Citizen where id = ?", [id])
+            const { Email } = req.body
+            const [rows, fields] = await pool.query("select * from Citizen where Email = ?", [Email])
             res.json({
                 data: rows
             })
