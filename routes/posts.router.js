@@ -4,11 +4,7 @@ const express = require("express")
 const router = express.Router()
 multer = require("multer");
 
-bodyParser = require("body-parser"),
-path = require("path"),
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname, "public")));
+
 
 const upload = multer({storage:multer.memoryStorage()});
 
