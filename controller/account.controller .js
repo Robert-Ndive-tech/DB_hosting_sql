@@ -23,7 +23,7 @@ const accountController ={
     create: async (req, res) => {
         try {
             const { Name, Password, Email, Phonenumber,Age, Address, CStatus }  = req.body
-            const sql = 'INSERT INTO Citizen (Name, Password, Email, Phonenumber, Age,Address, CStatus) VALUES (?, ?, ?, ?,?, ?, ?)';
+            const sql = 'INSERT INTO Citizen (Name, Password, Email, Phonenumber, Age,Address, CStatus) VALUES (?, ?, ?, NULL,NULL,NULL,NULL)';
             const [rows, fields] = await pool.query(sql, [ Name, Password, Email, Phonenumber,Age, Address, CStatus])
             res.json({
                 data: rows
