@@ -12,5 +12,7 @@ router.get("/:id", accountController.getById)
 router.delete("/:id", accountController.delete)
 router.post("/login",accountController.login)
 router.post("/register",accountController.register)
+router.get("/read/:id",accountController.getId)
+router.post("/send",accountController.createAccount)
 
 module.exports = router

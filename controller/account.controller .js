@@ -2,6 +2,24 @@ const bcrypt = require('bcrypt');
 const pool = require ("../database/index");
 const jwt = require('jsonwebtoken');
 const accountController ={
+
+
+
+    createAccount: async (req, res) => {
+        try {
+            const { Name, Password, Email, Phonenumber,Age, Address, CStatus }  = req.body
+            const sql = 'INSERT INTO Accounts (Name, Password, Email) VALUES (?, ?, ?)';
+            const [rows, fields] = await pool.query(sql, [ Name, Password, Email, Phonenumber,Age, Address, CStatus])
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
     create: async (req, res) => {
         try {
             const { Name, Password, Email, Phonenumber,Age, Address, CStatus }  = req.body
@@ -32,6 +50,7 @@ const accountController ={
             })
         }
     },
+    
     update: async (req, res) => {
         try {
             const { Name,Email, Password, Phonenumber,Age, Address, CStatus }  = req.body
@@ -52,6 +71,21 @@ const accountController ={
         try {
             const { Email } = req.body
             const [rows, fields] = await pool.query("select * from Citizen where Email = ?", [Email])
+            res.json({
+                data: rows
+            })
+        } catch (error) {
+            console.log(error)
+            res.json({
+                status: "error"
+            })
+        }
+    },
+
+    getId: async (req, res) => {
+        try {
+            const { Email } = req.body
+            const [rows, fields] = await pool.query("select Name from Accounts where Email = ?", [Email])
             res.json({
                 data: rows
             })
