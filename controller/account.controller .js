@@ -9,7 +9,7 @@ const accountController ={
         try {
             const { Name, Password, Email, Phonenumber,Age, Address, CStatus }  = req.body
             const sql = 'INSERT INTO Accounts (Name, Password, Email) VALUES (?, ?, ?)';
-            const [rows, fields] = await pool.query(sql, [ Name, Password, Email, Phonenumber,Age, Address, CStatus])
+            const [rows, fields] = await pool.query(sql, [ Name, Password, Email])
             res.json({
                 data: rows
             })
