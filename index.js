@@ -22,11 +22,11 @@ const io = new Server(server, {
 });
 
 // Initialize Supabase client
-const SUPABASE_URL = "https://uiavzmyvqmkdhjaedgdx.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVpYXZ6bXl2cW1rZGhqYWVkZ2R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAxMTY1MjYsImV4cCI6MjA1NTY5MjUyNn0.TcinZf5-f-sSC_1OfAY_mB1dllEI0t_Wgi8X_RiCEZI";
+const SUPABASE_URL = "https://kelytxjtgaxzrwpixbfo.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbHl0eGp0Z2F4enJ3cGl4YmZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzE2MzgsImV4cCI6MjA1NzcwNzYzOH0.HzKrIiaHDXr8y10wKDCkIclIk2VNAOj1pZXfoeqXVBA";
 
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Store active users
 const activeUsers = new Map();
