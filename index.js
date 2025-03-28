@@ -13,10 +13,10 @@ const server = createServer(appclose);
 appclose.use(cors());
 appclose.use(express.json());
 
-// Initialize Socket.IO
+// the problem comes from her  the online will use online serves while the reverse is also true
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:8080", // React appclose URL
+    origin: "https://closeencounter.vercel.app", // React appclose URL
     methods: ["GET", "POST"],
   },
 });
