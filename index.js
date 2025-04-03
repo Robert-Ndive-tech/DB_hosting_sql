@@ -16,11 +16,10 @@ appclose.use(express.json());
 // the problem comes from her  the online will use online serves while the reverse is also true
 const io = new Server(server, {
   cors: {
-    origin: "https://localhost:8080", 
+    origin: "https://closeencounter.vercel.app", // React app URL
     methods: ["GET", "POST"],
   },
 });
-
 
 
 // // Initialize Supabase client
@@ -476,6 +475,4 @@ appclose.get("/profiles/:id", async (req, res) => {
 const PORT = process.env.PORT || 1000;
 server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-
-  
 });
