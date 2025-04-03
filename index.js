@@ -16,7 +16,7 @@ appclose.use(express.json());
 // the problem comes from her  the online will use online serves while the reverse is also true
 const io = new Server(server, {
   cors: {
-    origin: "https://closeencounter.vercel.app", // React app URL
+    origin: "http://localhost:8080", // React app URL
     methods: ["GET", "POST"],
   },
 });
