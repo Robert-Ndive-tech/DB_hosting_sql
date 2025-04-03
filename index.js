@@ -12,29 +12,14 @@ const server = createServer(appclose);
 
 appclose.use(cors());
 appclose.use(express.json());
-CLIENT_URL="https://closeencounter.vercel.app/"
 
 // the problem comes from her  the online will use online serves while the reverse is also true
 const io = new Server(server, {
   cors: {
-    origin: CLIENT_URL || "http://localhost:8080",
+    origin: "https://closeencounter.vercel.app", // React appclose URL
     methods: ["GET", "POST"],
   },
 });
-
-
-// // Initialize Supabase client
-// const SUPABASE_URL = "https://kelytxjtgaxzrwpixbfo.supabase.co";
-// const SUPABASE_ANON_KEY =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbHl0eGp0Z2F4enJ3cGl4YmZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzE2MzgsImV4cCI6MjA1NzcwNzYzOH0.HzKrIiaHDXr8y10wKDCkIclIk2VNAOj1pZXfoeqXVBA";
-
-
-//   const SUPABASE_URL = "https://uiavzmyvqmkdhjaedgdx.supabase.co";
-// const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVpYXZ6bXl2cW1rZGhqYWVkZ2R4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAxMTY1MjYsImV4cCI6MjA1NTY5MjUyNn0.TcinZf5-f-sSC_1OfAY_mB1dllEI0t_Wgi8X_RiCEZI";
-
-
-// const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-
 
 // Initialize Supabase client
 const SUPABASE_URL = "https://kelytxjtgaxzrwpixbfo.supabase.co";
