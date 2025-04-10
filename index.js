@@ -23,9 +23,8 @@ const io = new Server(server, {
 });
 
 // // Initialize Supabase client
-// const SUPABASE_URL = "https://kelytxjtgaxzrwpixbfo.supabase.co";
-// const SUPABASE_ANON_KEY =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbHl0eGp0Z2F4enJ3cGl4YmZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzE2MzgsImV4cCI6MjA1NzcwNzYzOH0.HzKrIiaHDXr8y10wKDCkIclIk2VNAOj1pZXfoeqXVBA";
+const SUPABASE_URL1 = "https://kelytxjtgaxzrwpixbfo.supabase.co";
+ const SUPABASE_ANON_KEY =   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtlbHl0eGp0Z2F4enJ3cGl4YmZvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMzE2MzgsImV4cCI6MjA1NzcwNzYzOH0.HzKrIiaHDXr8y10wKDCkIclIk2VNAOj1pZXfoeqXVBA";
 
 
   const SUPABASE_URL = "https://uiavzmyvqmkdhjaedgdx.supabase.co";
@@ -33,6 +32,7 @@ const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiO
 
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const mysupabase=createClient(SUPABASE_URL1, SUPABASE_ANON_KEY );
 
 // Store active users
 const activeUsers = new Map();
@@ -74,7 +74,7 @@ io.on("connection", (socket) => {
       };
 
       // Insert into Supabase
-      const { error } = await supabase.from("messages").insert([messageData]);
+      const { error } = await mysupabase.from("messages").insert([messageData]);
       if (error) throw error;
 
       // Emit message to receiver or group
@@ -124,7 +124,7 @@ appclose.get("/messages", async (req, res) => {
     }
 
     // Construct the base query for messages
-    let query = supabase
+    let query = mysupabase
       .from("messages")
       .select("sender_id, sender_name, receiver_id, message, timestamp")
       .order("timestamp", { ascending: true });
@@ -196,7 +196,7 @@ appclose.get("/distinct-contacts", async (req, res) => {
     }
 
     // Construct the query to get distinct sender and receiver IDs
-    const { data: messages, error: messagesError } = await supabase
+    const { data: messages, error: messagesError } = await mysupabase
       .from("messages")
       .select("sender_id, receiver_id")
       .or(`sender_id.eq.${user_id},receiver_id.eq.${user_id}`); // Get messages where the user is either sender or receiver
@@ -250,7 +250,7 @@ appclose.put("/messages/read", async (req, res) => {
     }
 
     // Fetch the message to verify ownership
-    const { data: message, error: fetchError } = await supabase
+    const { data: message, error: fetchError } = await mysupabase
       .from("messages")
       .select("*")
       .eq("id", message_id)
@@ -311,7 +311,7 @@ appclose.put("/messages/read-all", async (req, res) => {
     }
 
     // Update all unread messages from this sender to this receiver
-    const { error } = await supabase
+    const { error } = await mysupabase
       .from("messages")
       .update({ read: true })
       .eq("sender_id", sender_id)
@@ -324,7 +324,7 @@ appclose.put("/messages/read-all", async (req, res) => {
     }
 
     // Get count of updated messages for response
-    const { count, error: countError } = await supabase
+    const { count, error: countError } = await mysupabase
       .from("messages")
       .select("*", { count: "exact", head: true })
       .eq("sender_id", sender_id)
@@ -396,7 +396,7 @@ appclose.get("/profiles", async (req, res) => {
     }
 
     // Get existing contacts for the user to mark which ones already have conversations
-    const { data: messages, error: messagesError } = await supabase
+    const { data: messages, error: messagesError } = await mysupabase
       .from("messages")
       .select("sender_id, receiver_id")
       .or(`sender_id.eq.${user_id},receiver_id.eq.${user_id}`);
@@ -445,7 +445,7 @@ appclose.get("/profiles/:id", async (req, res) => {
       return res.status(400).json({ error: "Profile ID is required" });
     }
 
-    const { data: profile, error } = await supabase
+    const { data: profile, error } = await mysupabase
       .from("profiles")
       .select("id, name, about_me, photos, last_seen")
       .eq("id", id)
