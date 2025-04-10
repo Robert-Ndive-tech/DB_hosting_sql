@@ -18,6 +18,7 @@ const io = new Server(server, {
   cors: {
     origin: "https://closeencounter.vercel.app", 
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
@@ -43,7 +44,7 @@ io.on("connection", (socket) => {
   // **User joins with authentication**
   socket.on("authenticate", async ({ user_id, token }) => {
     try {
-      // Verify user token with Supabase
+     // Verify user token with Supabase
       const { data, error } = await supabase.auth.getUser(token);
       if (error || !data) {
         console.error("❌ Authentication failed:", error);
