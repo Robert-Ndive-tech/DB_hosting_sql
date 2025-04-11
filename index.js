@@ -43,14 +43,7 @@ io.on("connection", (socket) => {
   // **User joins with authentication**
   socket.on("authenticate", async ({ user_id, token }) => {
     try {
-      // Verify user token with Supabase
-      // const { data, error } = await supabase.auth.getUser(token);
-      // if (error || !data) {
-      //   console.error("❌ Authentication failed:", error);
-      //   socket.emit("auth-failed", "Invalid token");
-      //   return;
-      // }
-
+    
       // Store active user
       activeUsers.set(socket.id, user_id);
       socket.join(user_id); // Join personal room for private messages
