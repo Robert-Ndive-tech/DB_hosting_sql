@@ -17,6 +17,7 @@ appclose.use(express.json());
 const io = new Server(server, {
   cors: {
     origin: "https://closeencounter.vercel.app/", 
+    //origin: "https://closeencounter.vercel.app/", 
     methods: ["GET", "POST"],
   },
 });
